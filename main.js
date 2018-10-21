@@ -22,6 +22,7 @@ var extra = 0.2;
 var starfast;
 var Key = "";
 var Molciklives = 40;
+kills = 0; // var tam neni schvalne
 
 function setup() {
     if(level===11){
@@ -36,10 +37,7 @@ function setup() {
             fill('red');
             textAlign(CENTER);
             textSize(30);
-            //text("Školní Wifi:"//+Http.responseText, width/2, height/2);
-
-      // };
-
+            window.location.replace("/bobr/win?kills="+String(kills));
         Getout();
     }
     life = new Lives(lives);
@@ -207,7 +205,7 @@ function draw() {
                         Key += 'br';
                         shots.splice(i, 1);
                         fire = false;
-
+                        kills += 1;
 
                         bobr.splice(j, 1);
                         break;
@@ -220,7 +218,7 @@ function draw() {
                     Molciklives--;
                     shots.splice(i, 1);
                     fire = false;
-
+                    kills += 1;
 
                     if(Molciklives===0) {
                         bobr.splice(0, 1);

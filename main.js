@@ -23,6 +23,10 @@ var extra = 0.2;
 var starfast;
 var Key = "";
 var Molciklives = 40;
+wifi = "NEJDŘÍV VYHRAJ HRU, ZMRDE!"
+var url = "/bobr/win";
+var method = "POST";
+var shouldBeAsync = true;
 
 function setup() {
     if(level===11){
@@ -32,8 +36,17 @@ function setup() {
         fill('red');
         textAlign(CENTER);
         textSize(30);
-        text("YOU HAVE WON", width/2, height/2);
-        window.location.replace("/bobr/win?Key"=+Key);
+
+        request = new XMLHttpRequest();
+
+        request.onload = function () {
+           wifi = request.responseText;
+        }
+
+        request.open(method, url, shouldBeAsync);
+        request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+        request.send(Key);
+        text("HESLO NA ŠKOLNí WI-FI JE:"+wifi, width/2, height/2);
         Getout();
 
 

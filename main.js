@@ -26,22 +26,17 @@ var Molciklives = 40;
 
 function setup() {
     if(level===11){
-        //const Http = new XMLHttpRequest();
-        //const url='https://qoutegenerator/bobr';
-        //Http.open("GET", url,true,Key,null);
-        //Http.send();
-        //Http.onreadystatechange=(e)=>{
-            fill('black');
+        fill('black');
 
-            rect(0,0,width,height,);
-            fill('red');
-            textAlign(CENTER);
-            textSize(30);
-            //text("Školní Wifi:"//+Http.responseText, width/2, height/2);
-
-      // };
-
+        rect(0,0,width,height,);
+        fill('red');
+        textAlign(CENTER);
+        textSize(30);
+        text("YOU HAVE WON", width/2, height/2);
+        window.location.replace("/bobr/win?Key="+Key);
         Getout();
+
+
     }
     life = new Lives(lives);
     shots = [];

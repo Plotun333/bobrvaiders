@@ -3,6 +3,7 @@
 //brrr
 var Player;
 var bobr = [];
+var bobrblood = [];
 var bobrspeed =-1;
 var side = 'left';
 var shots = [];
@@ -112,6 +113,8 @@ function draw() {
         level++;
 
         Key+="A";
+        bobrblood = [];
+
         setup();
     }
     background('black');
@@ -119,6 +122,11 @@ function draw() {
     life.draw();
     for(var b = 0; b < blocks.length; b++){
         blocks[b].show();
+    }
+    if(bobrblood.length>0) {
+        for (var bld = 0; bld < bobrblood.length; bld++) {
+            bobrblood[bld].show();
+        }
     }
     for (var i = 0; i < bobr.length; i++) {
         bobr[i].show();
@@ -176,10 +184,12 @@ function draw() {
                         break;
 
                     }
+
                 }
             }
         }
     }
+
     for (var i = 0; i < shots.length; i++) {
         shots[i].move();
         shots[i].show();
@@ -207,8 +217,8 @@ function draw() {
                         Key += 'br';
                         shots.splice(i, 1);
                         fire = false;
-
-
+                        var blood = new Blood(bobr[j].x,bobr[j].y);
+                        bobrblood.push(blood);
                         bobr.splice(j, 1);
                         break;
                     }
@@ -237,7 +247,7 @@ function draw() {
         }
 
         for (var i = 0; i < bobr.length; i++) {
-            if (bobr[i].hits(Player)) {
+            if (bobr[i].y>=Player.y-40) {
                 alert("You Have Died");
                 fill('black');
                 rect(0, 0, width, height,);
@@ -325,9 +335,17 @@ function movebobr() {
 
 
             }
+            for (var b = blocks.length-1; b > -1; b--) {
+                if(bobr[i].hits(blocks[b])){
+                    blocks.splice(b,1);
+                    break;
+                }
+            }
+
         }
         for (var ix = bobr.length-1; ix > -1; ix--) {
             bobr[ix].x += bobrspeed;
+
         }
 
 

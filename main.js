@@ -33,7 +33,7 @@ function setup() {
         textAlign(CENTER);
         textSize(30);
         text("YOU HAVE WON", width/2, height/2);
-        window.location.replace("/bobr/win?Key="+Key);
+        window.location.replace("/bobr/win?Key"=+Key);
         Getout();
 
 

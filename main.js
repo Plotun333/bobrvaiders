@@ -1,6 +1,3 @@
-//jestliže tohle čtete tak jste bobr (Vitek Peterka nebo Kryštof Svobada pane pane)
-//Wifi z tomle kodu neni
-//brrr
 var Player;
 var bobr = [];
 var bobrblood = [];
@@ -22,7 +19,7 @@ var lives = 3;
 var extra = 0.2;
 var starfast;
 var Key = "";
-var Molciklives = 40;
+#var Molciklives = 40;
 wifi = "NEJDŘÍV VYHRAJ HRU, ZMRDE!"
 var url = "/bobr/win";
 var method = "POST";
@@ -107,10 +104,10 @@ function setup() {
             }
         }
     }
-    else{
-
-        bobr[0] = new Molcik();
-    }
+    #else{
+    #  
+    #    bobr[0] = new Molcik();
+    #}
 
 }
 function draw() {
